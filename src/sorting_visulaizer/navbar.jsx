@@ -14,8 +14,8 @@ class Nav extends Component {
             <div class='sorting'>
                 <button className='buttons' onClick={() => this.props.mergesort()}>merge sort</button>
                 <button className='buttons' onClick={() => this.props.bubblesort()}>bubble sort</button>
-                <div className='buttons' onClick={() => this.props.mergesort()}>heapsort</div>
-                <div className='buttons' onClick={() => this.props.mergesort()}>quicksort</div>
+                <button className='buttons' onClick={() => this.props.selectionsort()}>selectionsort</button>
+                <button className='buttons' onClick={() => this.props.insertionsort()}>insertionsort</button>
 
             </div>
         </div>);

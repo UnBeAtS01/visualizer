@@ -56,3 +56,42 @@ export const bubblesort = (array, moves) => {
     return array;
 
 }
+
+
+export const selectionsort = (array, moves) => {
+    for (let i = 0; i < array.length - 1; i++) {
+        let min_idx = i;
+        for (let j = i + 1; j < array.length; j++) {
+            if (array[j] < array[min_idx]) {
+                min_idx = j;
+            }
+        }
+        let temp_arr = [...array, i, min_idx];
+        moves.push(temp_arr);
+        let temp = array[min_idx];
+        array[min_idx] = array[i];
+        array[i] = temp;
+        temp_arr = [...array, i, min_idx];
+        moves.push(temp_arr);
+    }
+    return array;
+}
+export const insertionsort = (array, moves) => {
+    for (let i = 1; i < array.length; i++) {
+        for (let j = i - 1; j >= 0; j--) {
+            let temp_array = [...array, j, j + 1];
+            moves.push(temp_array);
+            if (array[j] > array[j + 1]) {
+                let temp = array[j];
+                array[j] = array[j + 1];
+                array[j + 1] = temp;
+                temp_array = [...array, j, j + 1];
+                moves.push(temp_array);
+            }
+            else {
+                break;
+            }
+        }
+    }
+    return array;
+}
