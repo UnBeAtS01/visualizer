@@ -2,10 +2,7 @@ import './navbar.scss';
 import React, { Component } from 'react'
 
 class Nav extends Component {
-    constructor(props) {
-        super(props);
 
-    }
     render() {
         const { speed, column } = this.props;
         return (<div className="Nav-bar">

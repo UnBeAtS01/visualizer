@@ -1,4 +1,4 @@
-import sortingVisualizer from "../sorting_visulaizer/sortingVis";
+
 export const mergesort_util = (array1, array2, moves, start, end, mid) => {
     let i = 0;
     let j = 0;
