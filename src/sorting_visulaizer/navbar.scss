@@ -4,21 +4,93 @@
     align-items: center;
     height: 6rem;
     width: 100%;
+    background: rgba( 65, 65, 65, 0.5 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 20px );
+-webkit-backdrop-filter: blur( 20px );
+border-radius: 10px;
+
     .buttons{
         margin: 5px;
-        padding: 2px 3px 2px 3px;
+        padding: 5px 4px 2px 5px;
+        display: flex;
+        height: 40px;
+        color: #8deaff;
+        font-size: 20px;
+        font-family: monospace;
+        justify-content: center;
+        align-items: center;
+        background: rgb(22, 21, 21);
+       border:none;
     }
+    
     .rearrange{
         width: 50%;
         display: flex;
         justify-content: center;
         align-items: center;
+        height: 100%;
+      .reset{
+         display: flex;
+         border: none;
+         font-size: 18px;
+         background: transparent;
+         color: violet;
+         border:1px solid violet;
+         border-radius: 2px;
+         padding: 5px 5px 5px 5px;
+         margin-right: 10px;
+        
+      }
+      .reset:hover{
+       
+            background: rgb(177, 28, 177);
+            color: white;
+        
+      }
+        .first{
+           color: #8deaff;
+            display: flex;
+            margin-right: 10px;
+            flex-direction: row;
+            .speed_content{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding:5px 5px 4px 2px;
+               
+            }
+        }
+        .second{
+           color: #8deaff;
+            display: flex;
+            flex-direction: row;
+          
+            .number_content{
+                display: flex;
+                padding:5px 5px 4px 2px;
+               // background-color: red;
+                justify-content: center;
+                align-items: center;
+            }
+        }
     }
     .sorting{
       
         width: 50%;
         margin-right: 0;
         display: flex;
-       
+       .lvl{
+          border-bottom:4px solid #8709a7;
+          
+       }
     }
+}
+input{
+    border:none;
+    font-size: 20px;
+    width: 50px;
+}
+input:focus{
+    outline: none;
 }

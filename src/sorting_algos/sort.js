@@ -95,3 +95,6 @@ export const insertionsort = (array, moves) => {
     }
     return array;
 }
+export const quicksort = () => {
+
+}

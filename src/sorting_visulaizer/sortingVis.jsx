@@ -141,7 +141,7 @@ class sortingVisualizer extends React.Component {
     render() {
         const array = this.state.array;
         return (
-            <div>
+            <div >
                 <Nav reset={this.resetArray} bubblesort={this.Bubblesort} mergesort={this.mergesort} insertionsort={this.insertionsort} selectionsort={this.selectionsort} speedMod={this.speedMod} speed={this.state.speed} column={this.state.number} columnMod={this.columnMod} />
                 <div className='base_container'>
 
@@ -154,14 +154,14 @@ class sortingVisualizer extends React.Component {
                                         { }
                                     </div>
                                 else
-                                    return <div className='array-bars' key={idx} style={{ height: `${value}px`, backgroundColor: 'yellow' }}>
+                                    return <div className='array-bars' key={idx} style={{ height: `${value}px`, backgroundColor: 'violet' }}>
                                         { }
                                     </div>
                             }
                             else if (this.state.colorfinal.length === 0) {
                                 console.log("startend", this.state.color[0], this.state.color[1]);
                                 if (this.state.color[0] <= idx && this.state.color[1] >= idx) {
-                                    return <div className='array-bars' key={idx} style={{ height: `${value}px`, backgroundColor: 'yellow' }}>
+                                    return <div className='array-bars' key={idx} style={{ height: `${value}px`, backgroundColor: 'violet' }}>
                                         { }
                                     </div>
                                 }
@@ -172,7 +172,7 @@ class sortingVisualizer extends React.Component {
                                 }
                             }
                             else {
-                                return <div className='array-bars' key={idx} style={{ height: `${value}px`, backgroundColor: 'blue' }}>
+                                return <div className='array-bars' key={idx} style={{ height: `${value}px`, backgroundColor: '#8deaff' }}>
                                     { }
                                 </div>
                             }
