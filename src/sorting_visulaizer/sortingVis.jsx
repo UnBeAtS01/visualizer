@@ -16,6 +16,7 @@ class sortingVisualizer extends React.Component {
             speed: 10,
             number: 80,
             selecionArray: [],
+            quick_array: [],
         }
     }
     componentDidMount() {
@@ -26,7 +27,7 @@ class sortingVisualizer extends React.Component {
         for (let i = 0; i <= this.state.number; i++) {
             newArray.push(randomIntFromIntervals(50, 500));
         }
-        this.setState({ array: newArray, color: [], colorfinal: [], selecionArray: [] });
+        this.setState({ array: newArray, color: [], colorfinal: [], selecionArray: [], quick_array: [] });
     }
 
     calls = async (moves, newarray, i) => {
@@ -138,17 +139,68 @@ class sortingVisualizer extends React.Component {
 
         }, this.state.speed * (moves.length + 2));
     }
+    quicksortVisual = (moves, array, i) => {
+        setTimeout(() => {
+            let n = moves[i].length;
+            const val = this.state.array;
+            const pivot = moves[i][n - 3];
+            const first = moves[i][n - 2];
+            const second = moves[i][n - 1];
+            console.log(pivot, first, second);
+            this.setState({ quick_array: [pivot, first, second] });
+            for (let j = 0; j < moves[i].length - 3; j++) {
+                //console.log("main");
+                val[j] = moves[i][j];
+                //console.log(val[j], newarray[j]);
+                this.setState({ array: val });
+            }
+
+        }, this.state.speed * (i + 1));
+
+    }
+    quicksort = async () => {
+        let val = this.state.array;
+        let moves = [];
+        let newarray = sortingAlgo.quicksort(val, 0, val.length - 1, moves);
+
+        for (let i = 0; i < moves.length; i++) {
+            await this.quicksortVisual(moves, newarray, i);
+        }
+
+        setTimeout(() => {
+            this.setState({ array: newarray });
+            this.setState({ colorfinal: [0, this.state.array.length - 1], quick_array: [] })
+        }, this.state.speed * (moves.length + 2));
+
+    }
     render() {
         const array = this.state.array;
         return (
             <div >
-                <Nav reset={this.resetArray} bubblesort={this.Bubblesort} mergesort={this.mergesort} insertionsort={this.insertionsort} selectionsort={this.selectionsort} speedMod={this.speedMod} speed={this.state.speed} column={this.state.number} columnMod={this.columnMod} />
+                <Nav reset={this.resetArray} bubblesort={this.Bubblesort} mergesort={this.mergesort} insertionsort={this.insertionsort} selectionsort={this.selectionsort} quicksort={this.quicksort} speedMod={this.speedMod} speed={this.state.speed} column={this.state.number} columnMod={this.columnMod} />
                 <div className='base_container'>
 
                     {
                         array.map((value, idx) => {
-                            console.log("startend", idx, this.state.color[0], this.state.color[1]);
-                            if (this.state.color.length === 0 && this.state.colorfinal.length === 0) {
+                            //console.log("startend", idx, this.state.color[0], this.state.color[1]);
+                            if (this.state.quick_array.length !== 0) {
+                                if (idx === this.state.quick_array[0]) {
+                                    return <div className='array-bars' key={idx} style={{ height: `${value}px`, backgroundColor: 'green' }}>
+                                        { }
+                                    </div>
+                                }
+                                else if (idx === this.state.quick_array[1] || idx === this.state.quick_array[2]) {
+                                    return <div className='array-bars' key={idx} style={{ height: `${value}px`, backgroundColor: 'violet' }}>
+                                        { }
+                                    </div>
+                                }
+                                else {
+                                    return <div className='array-bars' key={idx} style={{ height: `${value}px` }}>
+                                        { }
+                                    </div>
+                                }
+                            }
+                            else if (this.state.color.length === 0 && this.state.colorfinal.length === 0) {
                                 if (this.state.selecionArray.length === 0 || (this.state.selecionArray[0] !== idx && this.state.selecionArray[1] !== idx))
                                     return <div className='array-bars' key={idx} style={{ height: `${value}px` }}>
                                         { }

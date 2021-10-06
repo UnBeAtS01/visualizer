@@ -95,6 +95,35 @@ export const insertionsort = (array, moves) => {
     }
     return array;
 }
-export const quicksort = () => {
+const partition = (array, start, end, moves) => {
+    let pivot = array[end];
+    let i = start;
+    for (let j = start; j < end; j++) {
+        let temp_arr = [...array, end, i, j];
+        console.log(end, i, j);
+        moves.push(temp_arr);
+        if (array[j] < pivot) {
+            let temp = array[j];
+            array[j] = array[i];
+            array[i] = temp;
+            temp_arr = [...array, end, i, j];
+            moves.push(temp_arr);
+            i++;
+        }
 
+    }
+    let temp = array[i];
+    array[i] = array[end];
+    array[end] = temp;
+    let temp_arr = [...array, end, i, end];
+    moves.push(temp_arr);
+    return i;
+}
+export const quicksort = (array, start, end, moves) => {
+    if (start < end) {
+        let pi = partition(array, start, end, moves);
+        quicksort(array, start, pi - 1, moves);
+        quicksort(array, pi + 1, end, moves);
+    }
+    return array;
 }
