@@ -127,3 +127,45 @@ export const quicksort = (array, start, end, moves) => {
     }
     return array;
 }
+
+
+const heapify = (array, end, idx, moves) => {
+    let curr = idx;
+    let left = (2 * idx) + 1;
+    let right = (2 * idx) + 2;
+    if (left <= end && array[curr] < array[left]) {
+        curr = left;
+    }
+    if (right <= end && array[curr] < array[right]) {
+        curr = right;
+    }
+
+    let temp_arr = [...array, idx, Math.min(left, end), Math.min(right, end)];
+    moves.push(temp_arr);
+    if (curr !== idx) {
+        let temp = array[idx];
+        array[idx] = array[curr];
+        array[curr] = temp;
+        temp_arr = [...array, idx, Math.min(left, end), Math.min(right, end)];
+        moves.push(temp_arr);
+        heapify(array, end, curr, moves);
+    }
+
+}
+export const heapsort = (array, moves) => {
+    let n = array.length;
+    for (let i = Math.floor(n / 2) - 1; i >= 0; i--) {
+        heapify(array, n - 1, i, moves);
+    }
+    for (let i = n - 1; i > 0; i--) {
+        let temp_arr = [...array, 0, 0, i];
+        moves.push(temp_arr);
+        let temp = array[i];
+        array[i] = array[0];
+        array[0] = temp;
+        temp_arr = [...array, 0, 0, i];
+        moves.push(temp_arr);
+        heapify(array, i - 1, 0, moves);
+    }
+    return array;
+}
