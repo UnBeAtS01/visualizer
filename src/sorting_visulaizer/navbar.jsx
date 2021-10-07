@@ -1,6 +1,6 @@
 import './navbar.scss';
 import React, { Component } from 'react'
-
+import logo from '../assets/logo.svg';
 class Nav extends Component {
     constructor(props) {
         super(props);
@@ -48,7 +48,9 @@ class Nav extends Component {
                 <button className={`buttons ${this.state.string === 'selectionsort' ? 'lvl' : ''}`} onClick={() => this.selectionsort()}>Selectionsort</button>
                 <button className={`buttons ${this.state.string === 'insertionsort' ? 'lvl' : ''}`} onClick={() => this.insertionsort()}>Insertionsort</button>
                 <button className={`buttons ${this.state.string === 'quicksort' ? 'lvl' : ''}`} onClick={() => this.quicksort()}>Quicksort</button>
+                <a className='github' href="https://github.com/unbeat01"><img src={logo} className='logo' alt='profile' /></a>
             </div>
+
         </div>);
     }
 };

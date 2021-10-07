@@ -21,9 +21,13 @@ border-radius: 10px;
         justify-content: center;
         align-items: center;
         background: rgb(22, 21, 21);
-       border:none;
+        border: none;
     }
-    
+    .buttons:hover{
+        cursor: pointer;
+        background-color: #1f92ac;
+        color: white;
+    }
     .rearrange{
         width: 50%;
         display: flex;
@@ -80,10 +84,25 @@ border-radius: 10px;
         width: 50%;
         margin-right: 0;
         display: flex;
+        justify-content: space-evenly;
        .lvl{
-          border-bottom:4px solid #8709a7;
-          
+        background-color: #1f92ac;
+        color: white;
+          border:1px solid #8deaff;
        }
+       .a{
+           display: flex;
+           margin-right: 0px;
+           height: 50px;
+           width: 50px;
+           background-color: transparent;
+           
+       }
+       .logo{
+        display: flex;
+        background-color: #8deaff;
+        border-radius: 50%;
+    }
     }
 }
 input{
